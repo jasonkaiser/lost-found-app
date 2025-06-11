@@ -1,14 +1,14 @@
 function initReportPage() {
   const availableImages = [
-    'frontend/assets/images/preview1.jpg',
-    'frontend/assets/images/preview2.jpg',
-    'frontend/assets/images/preview3.jpg',
-    'frontend/assets/images/preview4.jpg',
-    'frontend/assets/images/preview5.jpg',
-    'frontend/assets/images/preview6.jpg',
-    'frontend/assets/images/preview7.jpeg',
-    'frontend/assets/images/preview8.jpg',
-    'frontend/assets/images/preview9.jpeg'
+    '/assets/images/preview1.jpg',
+    '/assets/images/preview2.jpg',
+    '/assets/images/preview3.jpg',
+    '/assets/images/preview4.jpg',
+    '/assets/images/preview5.jpg',
+    '/assets/images/preview6.jpg',
+    '/assets/images/preview7.jpeg',
+    '/assets/images/preview8.jpg',
+    '/assets/images/preview9.jpeg'
   ];
 
   const $imageSelector = $('#imageSelector');
