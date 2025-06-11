@@ -49,7 +49,7 @@ if (isset($_SERVER['HTTP_ORIGIN']) && in_array($_SERVER['HTTP_ORIGIN'], $allowed
 } 
 
 header("Access-Control-Allow-Methods: GET, POST, PATCH, DELETE, OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type, Authentication");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
 if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     http_response_code(204);
     exit();
@@ -60,20 +60,31 @@ Flight::route('GET /', function() {
 });
 
 Flight::route('/*', function() {
-    if(
+    if (
         strpos(Flight::request()->url, '/auth/login') === 0 ||
         strpos(Flight::request()->url, '/auth/register') === 0
     ) {
         return TRUE;
     } else {
         try {
-            $token = Flight::request()->getHeader("Authorization");
-            if(Flight::authMiddleware()->verifyToken($token))
+            $authHeader = Flight::request()->getHeader("Authorization");
+            if (!$authHeader) {
+                Flight::halt(401, "Missing Authorization header");
+            }
+
+            if (preg_match('/Bearer\s(\S+)/', $authHeader, $matches)) {
+                $token = $matches[1];
+            } else {
+                Flight::halt(401, "Malformed Authorization header");
+            }
+
+            if (Flight::authMiddleware()->verifyToken($token))
                 return TRUE;
         } catch (\Exception $e) {
             Flight::halt(401, $e->getMessage());
         }
     }
 });
+
 
 Flight::start(); 
