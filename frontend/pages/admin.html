@@ -1,0 +1,249 @@
+<div id="admin-page">
+    <hr>
+    <div class="container">
+        <h2 class="mb-3 text-center header-text">Admin Dashboard</h2>
+        <hr>
+        <div class="mb-3 overview-container">
+            <div class="text-container" data-aos="fade-up" data-aos-duration="800">
+                <h4 class="overview-text" id="totalUsers">0</h4>
+                Total Users
+            </div>
+            <div class="text-container" data-aos="fade-up" data-aos-duration="800">
+                <h4 class="overview-text" id="totalFound">0</h4>
+                Total Found Reports
+            </div>
+            <div class="text-container" data-aos="fade-up" data-aos-duration="800">
+                <h4 class="overview-text" id="totalLost">0</h4>
+                Total Lost Reports
+            </div>
+        </div>
+        <hr class="line">
+        
+        <div class="table-container mb-4" data-aos="fade-left" data-aos-duration="1200">
+            <h4>Users</h4>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Location</th>
+                            <th>Verified</th>
+                            <th>Role</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="users-table-body">
+        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="table-container mb-4" data-aos="fade-left" data-aos-duration="1200">
+            <h4>Lost Items</h4>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Item</th>
+                            <th>Description</th>
+                            <th>Location</th>
+                            <th>Date</th>
+                            <th>User ID</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="lost-items-table-body">
+        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="table-container mb-4" data-aos="fade-left" data-aos-duration="1200">
+            <h4>Found Items</h4>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Item</th>
+                            <th>Description</th>
+                            <th>Location Found</th>
+                            <th>Date</th>
+                            <th>User ID</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="found-items-table-body">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="viewProfileModal" tabindex="-1" aria-labelledby="viewProfileModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="viewProfileModalLabel">User Profile</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>ID:</strong> <span id="profile-id"></span></p>
+                    <p><strong>Name:</strong> <span id="profile-name"></span></p>
+                    <p><strong>Email:</strong> <span id="profile-email"></span></p>
+                    <p><strong>Role:</strong> <span id="profile-role"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="editUserModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="edit-user-form">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editUserModalLabel">Edit User</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" id="edit-user-id">
+                        <div class="mb-3">
+                            <label for="edit-user-name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="edit-user-name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="edit-user-email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="edit-user-email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="edit-user-password" class="form-label">New Password</label>
+                            <input type="password" class="form-control" id="edit-user-password">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="viewLostItemModal" tabindex="-1" aria-labelledby="viewLostItemModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="viewLostItemModalLabel">Lost Item Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>ID:</strong> <span id="lost-item-id"></span></p>
+                    <p><strong>Item Name:</strong> <span id="lost-item-name"></span></p>
+                    <p><strong>Description:</strong> <span id="lost-item-description"></span></p>
+                    <p><strong>Location Lost:</strong> <span id="lost-item-location"></span></p>
+                    <p><strong>Date Lost:</strong> <span id="lost-item-date"></span></p>
+                    <p><strong>User ID:</strong> <span id="lost-item-user-id"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editLostItemModal" tabindex="-1" aria-labelledby="editLostItemModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="edit-lost-item-form">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editLostItemModalLabel">Edit Lost Item</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" id="edit-lost-item-id">
+                        <div class="mb-3">
+                            <label for="edit-lost-item-name" class="form-label">Item Name</label>
+                            <input type="text" class="form-control" id="edit-lost-item-name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="edit-lost-item-description" class="form-label">Description</label>
+                            <textarea class="form-control" id="edit-lost-item-description" rows="3"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="edit-lost-item-location" class="form-label">Location Lost</label>
+                            <input type="text" class="form-control" id="edit-lost-item-location" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="edit-lost-item-date" class="form-label">Date Lost</label>
+                            <input type="date" class="form-control" id="edit-lost-item-date" required>
+                        </div>
+              
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="viewFoundItemModal" tabindex="-1" aria-labelledby="viewFoundItemModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="viewFoundItemModalLabel">Found Item Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>ID:</strong> <span id="found-item-id"></span></p>
+                    <p><strong>Item Name:</strong> <span id="found-item-name"></span></p>
+                    <p><strong>Description:</strong> <span id="found-item-description"></span></p>
+                    <p><strong>Location Found:</strong> <span id="found-item-location"></span></p>
+                    <p><strong>Date Found:</strong> <span id="found-item-date"></span></p>
+                    <p><strong>User ID:</strong> <span id="found-item-user-id"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editFoundItemModal" tabindex="-1" aria-labelledby="editFoundItemModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="edit-found-item-form">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editFoundItemModalLabel">Edit Found Item</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" id="edit-found-item-id">
+                        <div class="mb-3">
+                            <label for="edit-found-item-name" class="form-label">Item Name</label>
+                            <input type="text" class="form-control" id="edit-found-item-name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="edit-found-item-description" class="form-label">Description</label>
+                            <textarea class="form-control" id="edit-found-item-description" rows="3"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="edit-found-item-location" class="form-label">Location Found</label>
+                            <input type="text" class="form-control" id="edit-found-item-location" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="edit-found-item-date" class="form-label">Date</label>
+                            <input type="date" class="form-control" id="edit-found-item-date" required>
+                        </div>
+                 
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

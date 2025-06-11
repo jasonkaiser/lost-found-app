@@ -1,0 +1,266 @@
+.container{
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.post-container, .info-container, .description-container{
+    background: var(--card-color);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: solid 1px var(--primary-color);
+    width: 80%;
+    margin-bottom: 2em;
+   
+}
+
+
+.status-container{
+    width: 30%;
+    height: 2.2em;
+    background: rgba(255, 141, 141, 0.26);
+    border: 1px solid #FF4B4B;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif; 
+    font-weight: bolder;
+    font-size: 1.1rem;
+    color: #FF4B4B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.status-container, .location-container {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.info-container{
+    height: 4em;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+}
+
+.location-container{
+    width: 30%;
+    height: 3em;
+    border: 1px solid #333333;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0.6em;
+
+}
+
+
+.post-container{
+    margin-top: 2em;
+    height: 33em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.slide-button{
+    font-size: 2rem;
+    background-color: rgb(185, 185, 185, 0.3);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-container{
+    margin-top: 2.4em;
+    width: 80%;
+    height: 35vh;
+    background-color: rgb(245, 244, 244);
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4em;
+    margin-bottom: 3em;
+
+    background-size: cover;     
+    background-repeat: no-repeat;  
+    background-position: center;  
+    
+}
+
+h1{
+    margin: 0;
+    margin-top: 0.3em;
+    color: black;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+
+.header-container{
+    height: 3em;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.description-container{
+    height: 17em;
+}
+
+
+.description-container hr{
+    margin-bottom: 1em;
+}
+
+.body-container{
+    height: 7em;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.title{
+    color: black;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.value{
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.description-text{
+    color: rgb(179, 179, 179);
+    font-size: 0.9rem;
+}
+
+hr{
+    margin-bottom: 1em;
+}
+
+.contact-container{
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    height: 20vh;
+    gap: 3%;
+    align-items: center;
+
+}
+
+.profile-info{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+}
+
+.profile-photo {
+    position: relative; 
+    width: 106px;
+    height: 106px;
+    border-radius: 50%;           
+    background-image: url('/frontend/assets/images/useravatar.png'); 
+    background-repeat: no-repeat;
+    background-position: center;  
+    background-size: cover;      
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25); 
+    border: 2px solid #CDCDCD;  
+    display: block;              
+}
+
+
+
+
+.contact-name{
+    font-size: 1.1rem;
+    margin-bottom: 0.2em;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--primary-color);
+    margin-left: 0.1em;
+}
+
+.contact-button{
+
+    background: #0077B6;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    color: white;
+    height: 4vh;
+    border-style: none;
+    width: 100%;
+
+}
+
+
+@media (max-width: 768px) {
+
+    .container{
+        width: 100%;
+    }
+
+    .post-container, .description-container, .info-container{
+        width: 100%;
+    }
+
+    .post-container{
+        height: 20em;
+    }
+    .image-container{
+        width: 100%;
+
+    }
+
+    h1{
+        font-size: 1.5rem;
+    }
+
+    .slide-button{
+        display: none;
+    }
+
+    .description-container{
+        height: 20em;
+    }
+
+    .contact-container{
+        justify-content: center;
+        
+    }
+
+}
+
+
+@media (max-width: 1468px) {
+
+    .container{
+        width: 100%;
+    }
+
+    .post-container, .description-container, .info-container{
+        width: 100%;
+    }
+
+    .post-container{
+        height: 25em;
+    }
+
+    .profile-info{
+        width: 40%;
+    }
+}

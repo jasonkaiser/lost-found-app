@@ -1,0 +1,124 @@
+.register-container{
+    width: 55%;
+    height: 80vh;
+    background-color: var(--card-color);
+    margin: auto;
+    border: 1px solid #CDCDCD;
+    border-radius: 20px;
+    display: flex;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.left-container{
+    width: 50%;
+    height: 100%;
+    background-color: rgb(31, 31, 31);
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.right-container {
+    width: 50%;
+    height: 100%; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    align-items: center;  
+}
+
+.form-section {
+    width: 70%;
+    display: flex;
+    justify-content: center; 
+    flex-grow: 1; 
+}
+
+.form-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    text-align: center;
+}
+
+.register-logo{
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 3.6rem;
+    margin-bottom: 0;
+}
+
+.text{
+    font-family: sans-serif;
+    color: var(--primary-color);
+    font-size: 0.7rem;
+}
+
+.register-header{
+    font-size: 1.6rem;
+    color: var(--text-color);
+    font-weight: 700;
+}
+
+.form-container p{
+    font-size: 0.8rem;
+    color: #777777;
+    font-weight: 100;
+}
+
+.form-control {
+    border-radius: 8px;
+    font-size: 0.8rem;
+}
+
+.btn-primary {
+    border-radius: 8px;
+    width: 100%;
+}
+
+.button-container {
+    width: 70%;  
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+    margin-bottom: 2em;
+    font-size: 0.8rem;
+}
+
+@media (max-width: 868px) {
+    .register-container {
+        width: 80%;
+        flex-direction: column;
+    }
+    .left-container, .right-container {
+        width: 100%;
+    }
+    .left-container{
+        border-radius: 20px;
+        margin-bottom: 2em;
+        display: none;
+    }
+    .form-section {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .register-container {
+        width: 90%;
+        padding: 10px;
+    }
+    .form-control {
+        font-size: 1rem;
+    }
+    .btn-primary {
+        font-size: 1.1rem;
+    }
+    .register-header {
+        font-size: 1.2rem;
+    }
+}

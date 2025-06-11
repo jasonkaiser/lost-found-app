@@ -1,0 +1,324 @@
+
+.profile-page{
+    display: flex;
+    margin: auto;
+    width: 95%;
+    height: auto;
+    margin-top: 7em;
+    justify-content: center;
+    gap: 5%;
+
+}
+.card-container{
+
+    background-color: white;
+    border: 1px solid #0077B6;
+    border-radius: 30px;
+    box-shadow: -1px 9px 16px -6px rgba(0, 0, 0, 0.25);
+    
+}
+
+
+
+.profile-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30%;
+    z-index: 1;
+}
+
+.lost-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 20%;
+}
+
+.found-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 20%;
+}
+
+
+.card-container.info{
+    height: 20vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    
+}
+
+.card-container.lost-header, .card-container.found-header{
+    height: 8vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-container.lost-reports, .card-container.found-reports{
+    height: 47vh;
+    width: 100%;
+}
+
+.card-banner{
+   
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(90deg, #0077B6 0%, #000000 100%);
+    border-radius: 29px 29px 0px 0px;
+
+}
+
+.card-container.profile {
+    height: 35vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+.profile-container, .lost-container, .found-container{
+    width: 100%;
+    gap: 1vh;
+}
+
+.card-banner {
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(90deg, #0077B6 0%, #000000 100%);
+    border-radius: 29px 29px 0px 0px;
+    top: 0;
+}
+
+.card-avatar {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    background: url('/frontend/assets/images/avatar.png');
+    background-position: center;
+    background-size: cover;
+    border: 2px solid #CDCDCD;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.card-container.profile i{
+    position: absolute;
+    font-size: 1.3rem;
+    color: white;
+    right: 6%;
+    top: 10%;
+}
+
+
+
+.profile-name{
+
+    font-size: 2.3em;
+    bottom: 1px;
+    color: var(--primary-color);
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+
+}
+
+.text-content{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.user-name{
+    font-size: 0.8em;
+    color: var(--text-color);
+    
+
+}
+
+.info-container i{
+    margin: 0;
+    padding: 0;
+}
+
+
+.edit-icon{
+    color: var(--primary-color);
+    position: absolute;
+    top: 13%;
+    right: 5%;
+    font-size: 1.3rem;
+}
+
+.info-container{
+    width: 95%;
+    height: 18%;
+    margin-left:5%;
+    color: #AAAAAA;
+    display: flex;
+    gap: 10%;
+    font-size: 0.9rem;
+    align-items: center;
+}
+
+.found-header h1, .lost-header h1{
+   font-size: 1.5rem;
+   margin: 0;
+   font-weight: 600;
+
+}
+
+
+
+
+.card-container.lost-reports, 
+.card-container.found-reports {
+    height: 47vh;
+    width: 100%;
+    overflow-y: auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.card-container.lost-reports::-webkit-scrollbar,
+.card-container.found-reports::-webkit-scrollbar {
+    width: 5px;
+}
+
+.card-container.lost-reports::-webkit-scrollbar-track,
+.card-container.found-reports::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.card-container.lost-reports::-webkit-scrollbar-thumb,
+.card-container.found-reports::-webkit-scrollbar-thumb {
+    background: #0077B6;
+    border-radius: 3px;
+}
+
+.report-card {
+    padding: 5px;
+    border-radius: 16px;
+    background: white;
+
+
+}
+
+.report-title {
+    font-size: 14px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.report-meta {
+    font-size: 12px;
+    color: #333333;
+}
+
+.report-card > .card-header {
+    border-radius: 15px;
+    border-bottom: none;
+    background-color: transparent;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+    border-color: #b9b9b9;
+    border-width: 0.5px;
+    border-style: solid;
+
+}
+
+.report-description {
+    margin-bottom: 8px;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.meta-item {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 12px;
+}
+
+.meta-item i {
+    margin-right: 4px;
+    font-size: 11px;
+}
+
+.no-reports-message {
+    text-align: center;
+    padding: 20px;
+    color: #999;
+}
+
+.card-header{
+    border-radius: 15px;
+}
+
+
+
+@media (max-width: 1280px){
+    .card-avatar{
+        width: 110px;
+        height: 110px;
+    }
+}
+
+@media (max-width: 768px) {
+    .profile-page{
+
+        flex-direction: column;
+        margin-top: 20%;
+        z-index:1 ;
+        width: 90%;
+        gap: 12vh;
+    }
+
+    .profile-container, .lost-container, .found-container{
+        width: 100%;
+        gap: 1vh;
+    }
+
+    .card-avatar{
+        width: 90px;
+        height: 90px;
+    }
+
+    .card-container.lost-header, .card-container.found-header{
+        border-radius: 22px;
+     
+    }
+
+
+
+
+ 
+
+
+
+ 
+}
+
+
+
+
+
+
+
+

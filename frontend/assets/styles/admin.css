@@ -1,0 +1,113 @@
+
+.table-container {
+    background: var(--card-color);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: solid 1px var(--primary-color);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+
+}
+
+th {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border: none;
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    border: none;
+}
+
+.btn-danger {
+    background-color: var(--error-color);
+    border: none;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border: none;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+h4{
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 2.4rem;
+    margin-bottom: 2em;
+    font-family: 'Poppins', sans-serif;
+}
+
+.btn{
+    width: 30%;
+    height: 2em;
+    color: white;
+}
+
+
+.btn:hover{
+    color: var(--text-color);
+}
+
+
+.header-text{
+    font-size: 2.6rem;
+    color: var(--primary-color);
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    padding: 1em;
+}
+
+.line{
+    margin-bottom: 10em;
+}
+
+.overview-container{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.overview-text{
+    color: var(--text-color);
+    font-size: 6rem;
+    margin: 0;
+}
+
+.text-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+        .btn{
+            margin-bottom: 0.3em;
+            width: 100%;
+        }
+
+        .overview-container{
+            flex-direction: column;
+        }
+
+        .overview-text{
+            font-size: 4rem;
+        }
+
+        .line{
+            margin-bottom: 5em;
+        }
+}

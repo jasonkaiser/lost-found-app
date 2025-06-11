@@ -1,0 +1,81 @@
+<div id="report-page">
+    
+    <div class="report-container container my-5"  data-aos="flip-right" data-aos-duration="1000">
+        <h2 class="report-header text-center mb-4">Report Form</h2>
+    
+        <form action="#">
+  
+            <div class="mb-3">
+                <label for="reportType" class="form-label">Report Type</label>
+                <select class="form-select" id="reportType" name="reportType" required>
+                    <option value="" selected disabled>Select Report Type</option>
+                    <option value="lost">Lost</option>
+                    <option value="found">Found</option>
+                </select>
+            </div>
+    
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title" name="title" required>
+            </div>
+    
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" id="description" name="description" rows="4" required></textarea>
+            </div>
+    
+            <div class="mb-3">
+                <label for="category" class="form-label">Category</label>
+                <select class="form-select" id="category" name="category" required>
+                    <option value="" selected disabled>Select Category</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="wallets">Wallets</option>
+                    <option value="clothing">Clothing</option>
+                    <option value="keys">Keys</option>
+                    <option value="documents">Documents</option>
+                    <option value="pets">Pets</option>
+                    <option value="jewelry">Jewelry</option>
+                    <option value="toys">Toys</option>
+                    <option value="others">Others</option>
+                </select>
+            </div>
+
+    
+            <div class="mb-3">
+                <label for="location" class="form-label">Location</label>
+                <input type="text" class="form-control" id="location" name="location" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Pin Item Location</label>
+                <div id="map" style="height: 300px; width: 100%;"></div>
+                <input type="hidden" id="latitude" name="latitude">
+                <input type="hidden" id="longitude" name="longitude">
+            </div>
+    
+            <div class="mb-3">
+                <label for="date" class="form-label">Date</label>
+                <input type="date" class="form-control" id="date" name="date" required>
+            </div>
+
+            
+            <div class="mb-3">
+                <label class="form-label">Choose an Image</label>
+                <div class="d-flex flex-wrap gap-2" id="imageSelector">
+
+                </div>
+                <input type="hidden" name="selectedImage" id="selectedImage">
+                <img id="previewImage" class="mt-3 d-none" style="max-width: 100px; max-height: 100px;" alt="Selected Preview">
+            </div>
+
+    
+
+            <button type="submit" class="btn btn-primary w-100">Submit Report</button>
+        </form>
+    </div>
+
+</div>
+
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC69kG7MM1tqwlh5cDAVMmoygqNy_3lffM&">
+</script>

@@ -1,0 +1,84 @@
+<div id="profile-page">
+    <hr>
+    <div class="profile-page">
+        <div class="profile-container" data-aos="fade-up" data-aos-duration="1200">
+            <div class="card-container profile">
+             
+                <div class="card-banner"></div>
+                <div class="card-avatar"></div>
+                <div class="text-content">
+                    <h1 class="profile-name">Loading...</h1>
+                    <p class="user-name">Loading...</p>
+                </div>
+            </div>
+            <div class="card-container info">
+                <i class="edit-icon fa-solid fa-pen-to-square edit-info-btn"></i>
+                <div class="info-container"><i class="fa-solid fa-address-card"></i><span class="info-name">Loading...</span></div>
+                <div class="info-container"><i class="fa-solid fa-phone"></i><span class="info-phone">065052080</span></div>
+                <div class="info-container"><i class="fa-solid fa-envelope"></i><span class="info-email">Loading...</span></div>
+                <div class="info-container"><i class="fa-solid fa-location-dot"></i><span class="info-location">Sarajevo</span></div>
+                <div class="info-container"><i class="fa-solid fa-certificate"></i><span class="info-verified">Loading...</span></div>
+            </div>
+        </div>
+            
+        <div class="lost-container" data-aos="fade-down" data-aos-duration="1200">
+            <div class="card-container lost-header">
+                <h1>Lost Reports</h1>
+            </div>
+            <div class="card-container lost-reports">
+      
+            </div>
+        </div>
+            
+        <div class="found-container" data-aos="fade-up" data-aos-duration="1300">
+            <div class="card-container found-header">
+                <h1>Found Reports</h1>
+            </div>
+            <div class="card-container found-reports">
+             
+            </div>
+        </div>
+    </div>
+   
+
+    <div class="modal fade" id="editProfileModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Profile</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="profileForm">
+                        <div class="mb-3">
+                            <label for="editName" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="editName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="editEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editPhone" class="form-label">Phone Number</label>
+                            <input type="text" class="form-control" id="editPhone" 
+                                pattern="[0-9+ ]*" inputmode="numeric" maxlength="20" placeholder="e.g. +38765111222">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editLocation" class="form-label">Location</label>
+                            <input type="text" class="form-control" id="editLocation" maxlength="50">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editPassword" class="form-label">Password</label>
+                            <input type="text" class="form-control" id="editPassword">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
