@@ -67,13 +67,27 @@ Flight::route('/*', function() {
         return TRUE;
     } else {
         try {
-            $token = Flight::request()->getHeader("Authentication");
-            if(Flight::authMiddleware()->verifyToken($token))
+            $authHeader = Flight::request()->getHeader("Authorization");
+            if (!$authHeader) {
+                Flight::halt(401, "Missing Authorization header");
+            }
+
+            // Remove "Bearer " prefix if present
+            if (strpos($authHeader, 'Bearer ') === 0) {
+                $token = substr($authHeader, 7);
+            } else {
+                $token = $authHeader;
+            }
+
+            if (Flight::authMiddleware()->verifyToken($token)) {
                 return TRUE;
+            }
+
         } catch (\Exception $e) {
             Flight::halt(401, $e->getMessage());
         }
     }
 });
+
 
 Flight::start();
