@@ -1,8 +1,10 @@
 RewriteEngine On
-RewriteBase /lost-found-app/backend/
+
+# If the requested file/folder doesn't exist, route to index.php
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php [QSA,L]
 
+# Preserve Authorization header for JWT or Bearer tokens
 RewriteCond %{HTTP:Authorization} ^(.*)
 RewriteRule .* - [E=HTTP_AUTHORIZATION:%1]
