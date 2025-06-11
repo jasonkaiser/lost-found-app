@@ -55,19 +55,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     exit();
 }
 
-Flight::route('GET /', function() {
+Flight::route('GET /api', function() {
     echo 'Lost and Found API is running!';
 });
 
-Flight::route('/*', function() {
+Flight::route('/api/*', function() {
     if (
-        strpos(Flight::request()->url, '/auth/login') === 0 ||
-        strpos(Flight::request()->url, '/auth/register') === 0
+        strpos(Flight::request()->url, '/api/auth/login') === 0 ||
+        strpos(Flight::request()->url, '/api/auth/register') === 0 
     ) {
         return TRUE;
     } else {
         try {
+            
             $authHeader = Flight::request()->getHeader("Authorization");
+
+            if (!$authHeader) {
+                $headers = getallheaders();
+                $authHeader = $headers['Authorization'] ?? $headers['authorization'] ?? null;
+            }
+
             if (!$authHeader) {
                 Flight::halt(401, "Missing Authorization header");
             }
@@ -85,6 +92,7 @@ Flight::route('/*', function() {
         }
     }
 });
+
 
 Flight::map('notFound', function(){
     Flight::halt(404, 'Route not found');
