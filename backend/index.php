@@ -1,4 +1,3 @@
-indexphp
 <?php
 require 'vendor/autoload.php';
 
@@ -68,7 +67,7 @@ Flight::route('/*', function() {
         return TRUE;
     } else {
         try {
-            $token = Flight::request()->getHeader("Authentication");
+            $token = Flight::request()->getHeader("Authorization");
             if(Flight::authMiddleware()->verifyToken($token))
                 return TRUE;
         } catch (\Exception $e) {
