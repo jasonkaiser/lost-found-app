@@ -55,14 +55,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     exit();
 }
 
-Flight::route('GET /api', function() {
+Flight::route('GET /', function() {
     echo 'Lost and Found API is running!';
 });
 
-Flight::route('/api/*', function() {
+Flight::route('/*', function() {
     if (
-        strpos(Flight::request()->url, '/api/auth/login') === 0 ||
-        strpos(Flight::request()->url, '/api/auth/register') === 0 
+        strpos(Flight::request()->url, '/auth/login') === 0 ||
+        strpos(Flight::request()->url, '/auth/register') === 0 
     ) {
         return TRUE;
     } else {
