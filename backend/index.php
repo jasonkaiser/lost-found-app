@@ -58,7 +58,6 @@ Flight::route('GET /', function () {
     echo 'Lost and Found API is running!';
 });
 
-
 Flight::route('/*', function () {
     $publicRoutes = ['/auth/login', '/auth/register', '/'];
     $url = Flight::request()->url;
@@ -68,26 +67,26 @@ Flight::route('/*', function () {
     }
 
     try {
-        $authHeader = Flight::request()->getHeader("Authorization");
+        $headers = getallheaders();
+        $authHeader = $headers['Authorization'] ?? $headers['authorization'] ?? null;
 
         if (!$authHeader) {
-            Flight::halt(401, "Missing Authorization header");
+            throw new Exception("Missing Authorization header");
         }
 
-    
         if (stripos($authHeader, 'Bearer ') === 0) {
             $token = substr($authHeader, 7);
         } else {
             $token = $authHeader;
         }
 
-        if (Flight::authMiddleware()->verifyToken($token)) {
-            return TRUE;
-        }
-
+        Flight::authMiddleware()->verifyToken($token);
+        return TRUE;
     } catch (\Exception $e) {
-        Flight::halt(401, $e->getMessage());
+        Flight::halt(401, "Unauthorized: " . $e->getMessage());
     }
 });
 
+
 Flight::start();
+
