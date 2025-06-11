@@ -1,8 +1,10 @@
+indexphp
 <?php
 require 'vendor/autoload.php';
 
-require_once __DIR__ . '/data/roles.php';
+require_once __DIR__.'/data/roles.php';
 require_once __DIR__ . "/middleware/authMiddleware.php";
+
 
 
 Flight::register('usersService', 'UsersService');
@@ -12,6 +14,8 @@ Flight::register('foundItemsService', 'FoundItemsService');
 Flight::register('lostItemsService', 'LostItemsService');
 Flight::register('authService', 'AuthService');
 Flight::register('authMiddleware', 'AuthMiddleware');
+
+
 
 
 require_once __DIR__ . '/rest/services/usersService.php';
@@ -28,14 +32,13 @@ require_once __DIR__ . '/rest/routes/foundItemsRoute.php';
 require_once __DIR__ . '/rest/routes/lostItemsRoute.php';
 require_once __DIR__ . '/rest/routes/authRoute.php';
 
+
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
-
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-
 
 $allowedOrigins = [
     "http://127.0.0.1:5501",
@@ -44,49 +47,34 @@ $allowedOrigins = [
 
 if (isset($_SERVER['HTTP_ORIGIN']) && in_array($_SERVER['HTTP_ORIGIN'], $allowedOrigins)) {
     header("Access-Control-Allow-Origin: " . $_SERVER['HTTP_ORIGIN']);
-}
+} 
 
 header("Access-Control-Allow-Methods: GET, POST, PATCH, DELETE, OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type, Authorization");
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+header("Access-Control-Allow-Headers: Content-Type, Authentication");
+if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     http_response_code(204);
     exit();
 }
 
-
-Flight::route('GET /', function () {
+Flight::route('GET /', function() {
     echo 'Lost and Found API is running!';
 });
 
-Flight::route('/*', function () {
-    $publicRoutes = ['/auth/login', '/auth/register', '/'];
-    $url = Flight::request()->url;
-
-    foreach ($publicRoutes as $route) {
-        if (strpos($url, $route) === 0) return TRUE;
-    }
-
-    try {
-        $headers = getallheaders();
-        $authHeader = $headers['Authorization'] ?? $headers['authorization'] ?? null;
-
-        if (!$authHeader) {
-            throw new Exception("Missing Authorization header");
-        }
-
-        if (stripos($authHeader, 'Bearer ') === 0) {
-            $token = substr($authHeader, 7);
-        } else {
-            $token = $authHeader;
-        }
-
-        Flight::authMiddleware()->verifyToken($token);
+Flight::route('/*', function() {
+    if(
+        strpos(Flight::request()->url, '/auth/login') === 0 ||
+        strpos(Flight::request()->url, '/auth/register') === 0
+    ) {
         return TRUE;
-    } catch (\Exception $e) {
-        Flight::halt(401, "Unauthorized: " . $e->getMessage());
+    } else {
+        try {
+            $token = Flight::request()->getHeader("Authentication");
+            if(Flight::authMiddleware()->verifyToken($token))
+                return TRUE;
+        } catch (\Exception $e) {
+            Flight::halt(401, $e->getMessage());
+        }
     }
 });
 
-
-Flight::start();
-
+Flight::start(); 
