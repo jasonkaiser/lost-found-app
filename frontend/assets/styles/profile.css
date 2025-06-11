@@ -103,7 +103,7 @@
     position: absolute;
     width: 140px;
     height: 140px;
-    background: url('/frontend/assets/images/avatar.png');
+    background: url('assets/images/avatar.png');
     background-position: center;
     background-size: cover;
     border: 2px solid #CDCDCD;
