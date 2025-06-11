@@ -5,9 +5,9 @@ $(document).ready(function () {
 });
 
 const config = {
-    templateDir: 'frontend/pages/',
-    styleDir: 'frontend/assets/styles/',
-    scriptDir: 'frontend/assets/js/'
+    templateDir: 'pages/',
+    styleDir: 'assets/styles/',
+    scriptDir: 'assets/js/'
 };
 
 const routes = {
