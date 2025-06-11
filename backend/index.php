@@ -86,5 +86,9 @@ Flight::route('/*', function() {
     }
 });
 
+Flight::map('notFound', function(){
+    Flight::halt(404, 'Route not found');
+});
+
 
 Flight::start(); 
