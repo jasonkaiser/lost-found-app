@@ -15,7 +15,6 @@ function initReportPage() {
   const $selectedImageInput = $('#selectedImage');
   const $previewImage = $('#previewImage');
 
-
   $imageSelector.empty();
 
   availableImages.forEach(src => {
@@ -165,7 +164,8 @@ function initReportPage() {
 
     const url = reportType === 'lost' ? '/lost-items' : '/found-items';
 
-    RestClient.post('rest' + url, data,
+   
+    RestClient.authPost('rest' + url, data,
       function (response) {
         Toast.success('Report submitted successfully!');
         $form[0].reset();
@@ -175,8 +175,7 @@ function initReportPage() {
       },
       function (error) {
         Toast.error('Failed to submit report: ' + (error.error || error.message || 'Unknown error'));
-      },
-      { Authentication: 'Bearer ' + token }
+      }
     );
   });
 }
