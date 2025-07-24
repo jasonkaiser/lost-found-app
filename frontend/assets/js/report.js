@@ -162,10 +162,10 @@ function initReportPage() {
       longitude: selectedLng
     };
 
-    const url = reportType === 'lost' ? '/lost-items' : '/found-items';
+    const url = reportType === 'lost' ? 'lost-items' : 'found-items';
 
    
-    RestClient.authPost('rest' + url, data,
+    RestClient.post(url, data,
       function (response) {
         Toast.success('Report submitted successfully!');
         $form[0].reset();
