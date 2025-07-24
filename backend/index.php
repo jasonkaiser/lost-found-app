@@ -41,7 +41,7 @@ error_reporting(E_ALL);
 
 $allowedOrigins = [
     "http://127.0.0.1:5501",
-    "https://lost-found-973uv.ondigitalocean.app/",
+    "https://lost-found-kmq3o.ondigitalocean.app/",
 ];
 
 Flight::before('start', function () use ($allowedOrigins) {
