@@ -44,64 +44,50 @@ $allowedOrigins = [
     "https://lost-found-973uv.ondigitalocean.app/",
 ];
 
-if (isset($_SERVER['HTTP_ORIGIN']) && in_array($_SERVER['HTTP_ORIGIN'], $allowedOrigins)) {
-    header("Access-Control-Allow-Origin: " . $_SERVER['HTTP_ORIGIN']);
-} 
+Flight::before('start', function () use ($allowedOrigins) {
+    if (isset($_SERVER['HTTP_ORIGIN']) && in_array($_SERVER['HTTP_ORIGIN'], $allowedOrigins)) {
+        header("Access-Control-Allow-Origin: " . $_SERVER['HTTP_ORIGIN']);
+        header("Access-Control-Allow-Methods: GET, POST, PATCH, DELETE, OPTIONS");
+        header("Access-Control-Allow-Headers: Content-Type, Authorization");
+        header("Access-Control-Allow-Credentials: true"); 
+    }
 
-header("Access-Control-Allow-Methods: GET, POST, PATCH, DELETE, OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type, Authorization");
-if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
-    http_response_code(204);
-    exit();
-}
-
-Flight::route('GET /test', function() {
-    echo "✅ Routing works!";
+    if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+        http_response_code(204); 
+        exit();
+    }
 });
+
+
 
 
 Flight::route('GET /', function() {
     echo 'Lost and Found API is running!';
 });
 
-Flight::route('/*', function() {
+Flight::route('/*', function () {
+    $url = Flight::request()->url;
+
     if (
-        strpos(Flight::request()->url, '/auth/login') === 0 ||
-        strpos(Flight::request()->url, '/auth/register') === 0 
+        strpos($url, '/auth/login') === 0 ||
+        strpos($url, '/auth/register') === 0
     ) {
         return TRUE;
-    } else {
-        try {
-            
-            $authHeader = Flight::request()->getHeader("Authorization");
+    }
 
-            if (!$authHeader) {
-                $headers = getallheaders();
-                $authHeader = $headers['Authorization'] ?? $headers['authorization'] ?? null;
-            }
+    try {
+        $headers = getallheaders();
+        $token = $headers['Authorization'] ?? $headers['authorization'] ?? null;
 
-            if (!$authHeader) {
-                Flight::halt(401, "Missing Authorization header");
-            }
-
-            if (preg_match('/Bearer\s(\S+)/', $authHeader, $matches)) {
-                $token = $matches[1];
-            } else {
-                Flight::halt(401, "Malformed Authorization header");
-            }
-
-            if (Flight::authMiddleware()->verifyToken($token))
-                return TRUE;
-        } catch (\Exception $e) {
-            Flight::halt(401, $e->getMessage());
+        if (!$token) {
+            throw new Exception("Missing Authorization header");
         }
+
+        Flight::auth_middleware()->verifyToken($token);
+        return TRUE;
+    } catch (\Exception $e) {
+        Flight::halt(401, "Unauthorized: " . $e->getMessage());
     }
 });
-
-
-Flight::map('notFound', function(){
-    Flight::halt(404, 'Route not found');
-});
-
 
 Flight::start(); 
