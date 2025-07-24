@@ -55,6 +55,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     exit();
 }
 
+Flight::route('GET /test', function() {
+    echo "✅ Routing works!";
+});
+
+
 Flight::route('GET /', function() {
     echo 'Lost and Found API is running!';
 });
