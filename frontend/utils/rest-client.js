@@ -99,5 +99,31 @@ let RestClient = {
                 }
             }
         });
-    }
+    },
+
+    authPost: function(url, data, callback, error_callback) {
+    $.ajax({
+        url: Constants.get_api_base_url() + url,
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(data),
+        beforeSend: function(xhr) {
+            const token = localStorage.getItem("jwt_token");
+            if (token) {
+                xhr.setRequestHeader("Authorization", "Bearer " + token);
+            }
+        },
+        success: function(response) {
+            if (callback) callback(response);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            if (error_callback) {
+                error_callback(jqXHR);
+            } else {
+                console.error("POST Request Failed:", jqXHR.responseText);
+            }
+        }
+    });
+}
+
 };
