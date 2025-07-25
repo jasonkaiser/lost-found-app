@@ -35,8 +35,13 @@ A single-page web application that helps users report and find lost or found ite
 
 - jQuery
 
+## Demo
 
-## Instructions
+**Demo Account:** adminaccount@gmail.com  -  jason123 
+
+**Live Demo:** https://lost-found-973uv.ondigitalocean.app
+
+## Local Machine Instructions 
 
 To start this project run on your local machine
 
@@ -56,10 +61,6 @@ To start this project run on your local machine
 - OpenAPI / Swagger Documentation: http://localhost/lost-found-app/backend/public/v1/docs/index.php
 
 
-## Demo
 
-**Demo Account:** adminaccount@gmail.com  -  jason123 
-
-**Live Demo:** https://lost-found-973uv.ondigitalocean.app
 
 
