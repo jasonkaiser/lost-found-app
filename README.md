@@ -39,7 +39,7 @@ A single-page web application that helps users report and find lost or found ite
 
 **Demo Account:** adminaccount@gmail.com  -  jason123 
 
-**Live Demo:** https://lost-found-973uv.ondigitalocean.app
+**Live Demo:** [https://lost-found-973uv.ondigitalocean.app](https://lost-found-kmq3o.ondigitalocean.app/#login)
 
 ## Local Machine Instructions 
 
